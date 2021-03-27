@@ -1,0 +1,81 @@
+body{
+    background-color: #151515;
+    margin: 0%;
+    padding: 0%;
+    font-family: sans-serif;
+}
+
+#forum{
+width: 350px;
+height: 400px;
+top:50%;
+left: 50%;
+position: absolute;
+transform: translate(-50%, -50%);
+background-color: #252525;
+text-align: center;
+box-shadow: #101010 1px 1px 10px 10px;
+border-radius: 10px;
+}
+
+#forum h1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500px;
+}
+
+#forum input[type="text"],#forum input[type="password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid cyan;
+    padding: 14px 10px;
+    border-radius: 15px;
+    width: 200px;
+    outline: none;
+    color: white;
+    transition: 0.25s;
+}
+
+#forum input[type="text"]:focus,#forum input[type="password"]:focus{
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+#forum input[type="submit"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    border-radius: 15px;
+    outline: none;
+    color: white;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+#forum input[type="submit"]:hover{
+    transition: 0.75s;
+    background: #2ecc71;
+}
+
+#forum h5{
+    margin-top: 40px;
+    color: white;
+    font-family: sans-serif;
+}
+
+#forum a{
+    color: #0fbcf9;
+    text-decoration: none;
+}
+
+#forum a:hover{
+    transition: 0.70s;
+    color: #ff3f34;
+}
