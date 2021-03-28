@@ -38,9 +38,11 @@ top:50%;
 left: 50%;
 position: absolute;
 transform: translate(-50%, -50%);
-background-color: #252525;
+/*background-color: #252525;*/
+background-color:rgba(0, 0, 0, 0);
 text-align: center;
-box-shadow: #101010 1px 1px 10px 10px;
+/*box-shadow: #202020 2px 2px 5px 0px;*/
+box-shadow: #252525 5px 5px 25px 3px, #252525 -5px -5px 20px 3px;
 border-radius: 10px;
 }
 
@@ -53,6 +55,7 @@ border-radius: 10px;
 #forum input[type="text"],#forum input[type="password"]{
     border: 0;
     background: none;
+    color: white;
     display: block;
     margin: 20px auto;
     text-align: center;
@@ -61,8 +64,8 @@ border-radius: 10px;
     border-radius: 15px;
     width: 200px;
     outline: none;
-    color: white;
     transition: 0.25s;
+
 }
 
 #forum input[type="text"]:focus,#forum input[type="password"]:focus{
@@ -104,4 +107,8 @@ border-radius: 10px;
 #forum a:hover{
     transition: 0.70s;
     color: #ff3f34;
+}
+
+::placeholder{
+    color: white;
 }
