@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const app = express();
 const User = require('./models/user')
 const port = process.env.PORT || 3000;
-const dbURL = "mongodb+srv://users:b3yd42003@yazilimblog.fk8py.mongodb.net/users?retryWrites=true&w=majority"
+const dbURL = "mongodb+srv://b3yd4:b3yd42003@yazilimblog.fk8py.mongodb.net/users?retryWrites=true&w=majority"
 
 // Veri Tabanı Bağlantısı...
 mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
