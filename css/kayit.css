@@ -38,9 +38,9 @@ body{
     left: 50%;
     position: absolute;
     transform: translate(-50%, -50%);
-    background-color: #252525;
+    background-color:rgba(0, 0, 0, 0);
     text-align: center;
-    box-shadow: #101010 1px 1px 10px 10px;
+    box-shadow: #252525 5px 5px 25px 3px, #252525 -5px -5px 20px 3px;
     border-radius: 10px;
 }
 
