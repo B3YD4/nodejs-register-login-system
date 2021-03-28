@@ -25,6 +25,8 @@ app.listen(port, (req, res) => {
 
 // Css dosyaları ve Terminal İçin Gerekli İşlemleri Yaptık
 app.use(express.static('css'));
+app.use(express.static('img'));
+app.use(express.static('libarys'));
 app.use(morgan('dev'));
 
 // Yönlendirmeler - Şema
