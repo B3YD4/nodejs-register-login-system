@@ -4,9 +4,10 @@ const mongoose = require('mongoose');
 const app = express();
 const User = require('./models/user')
 const port = process.env.PORT || 3000;
+const dbURL = "mongodb+srv://users:b3yd42003@yazilimblog.fk8py.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 // Veri Tabanı Bağlantısı...
-mongoose.connect('mongodb://localhost/users', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 mongoose.connection.on('open', () => {
     console.log('Veri Tabanı Bağlantısı Sağlandı...')
