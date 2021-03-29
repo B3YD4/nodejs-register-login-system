@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 const Swal = require('sweetalert2');
 
 // Veri Tabanı Bağlantısı...
-mongoose.connect( process.env.MONGODB_URI || dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect( process.env.FIXIE_SOCKS_HOST || process.env.MONGODB_URI || dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 mongoose.connection.on('open', () => {
     console.log('Veri Tabanı Bağlantısı Sağlandı...')
