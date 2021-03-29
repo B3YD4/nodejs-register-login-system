@@ -1,0 +1,28 @@
+{
+  "name": "nodejs-register-login-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "author": "B3YD4",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-flash": "^0.0.2",
+    "express-flash-message": "^2.1.0",
+    "express-flash-messages": "^0.1.1",
+    "express-session": "^1.17.1",
+    "flash": "^1.1.0",
+    "jade": "^1.9.2",
+    "mongoose": "^5.12.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.7",
+    "sweetalert2": "^10.15.7"
+  }
+}
