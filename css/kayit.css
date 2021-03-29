@@ -1,0 +1,142 @@
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+section h4{
+    position: absolute;
+    color: #38ada9;
+    font-size: 8em;
+    font-size: 10vw;
+}
+
+body{
+    background-color: #151515;
+    margin: 0%;
+    padding: 0%;
+    font-family: sans-serif;
+}
+
+#kayit{
+    width: 350px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background-color:rgba(0, 0, 0, 0);
+    text-align: center;
+    box-shadow: #252525 5px 5px 25px 3px, #252525 -5px -5px 20px 3px;
+    border-radius: 10px;
+}
+
+#kayit h1{
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500px;
+}
+
+#kayit input[type="text"], #kayit input[type="password"]{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    border: 2px solid cyan;
+    border-radius: 15px;
+    outline: none;
+    padding: 14px 10px;
+    color: white;
+    transition: 0.25s;
+    text-align: center;
+    width: 200px
+}
+
+#kayit input[type="text"]:focus, #kayit input[type="password"]:focus{
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+
+.btn{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #3498db;
+    padding: 14px 40px;
+    border-radius: 15px;
+    outline: none;
+    color: white;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background: #252525;
+    animation-name: buton;
+    animation-iteration-count:infinite;
+    animation-duration: 5s;
+}
+
+
+@keyframes buton{
+    0%{
+        border: 2px solid #3498db;
+        background-color: #3498db;
+    }
+    20%{
+        border: 2px solid #8e44ad;
+        background-color: #8e44ad;
+    }
+    40%{
+        border:2px solid #2ecc71;
+        background-color: #2ecc71;
+    }
+    60%{
+        border:2px solid #c0392b;
+        background-color: #c0392b;
+    }
+    80%{
+        border:2px solid #fed330;
+        background-color: #fed330;
+    }
+    100%{
+        border:2px solid #58B19F;
+        background-color: #58B19F;
+    }
+}
+
+#kayit h5{
+    margin-top: 40px;
+    color: white;
+    font-family: sans-serif;
+}
+
+#kayit a{
+    text-decoration: none;
+    color: #0fbcf9;
+}
+
+#kayit a:hover{
+    transition: 0.70s;
+    color: #ff3f34;
+}
+
+::placeholder{
+    color: white;
+}
