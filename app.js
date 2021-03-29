@@ -8,7 +8,7 @@ const uri = process.env.MONGO;
 const usercli = require('./routes/authRoutes');
 const bodyParser = require('body-parser');
 const Swal = require('sweetalert2');
-//const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3000;
 
 // Veri Tabanı Bağlantısı...
 mongoose.connect(uri , {useNewUrlParser: true, useUnifiedTopology: true});
@@ -22,11 +22,11 @@ mongoose.connection.on('error', (err) => {
 
 // Görüntü Motoru Yüklüyoruz
 app.set('view engine', 'ejs');
-/*
+
 // Server'ı Dinlemeye Aldık
 app.listen(PORT, (req, res) => {
     console.log("Server Ayağa Kaldırıldı...");
-});*/
+});
 
 // body-parser dahil ettik
 app.use(bodyParser.urlencoded({ extended: true }));
