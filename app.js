@@ -5,12 +5,13 @@ const app = express();
 const User = require('./models/user')
 const port = process.env.port || 3000;
 const dbURL = "mongodb+srv://b3yd4:b3yd42003@yazilimblog.fk8py.mongodb.net/users?retryWrites=true&w=majority"
+const fixie = "fixie:F5j5J3xy2dg5pRy@speedway.usefixie.com:1080"
 const usercli = require('./routes/authRoutes');
 const bodyParser = require('body-parser');
 const Swal = require('sweetalert2');
 
 // Veri Tabanı Bağlantısı...
-mongoose.connect( process.env.FIXIE_SOCKS_HOST || process.env.MONGODB_URI || MONGODB_URI || dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect( process.env.FIXIE_SOCKS_HOST || process.env.MONGODB_URI || MONGODB_URI || fixie || dbURL, {useNewUrlParser: true, useUnifiedTopology: true});
 
 mongoose.connection.on('open', () => {
     console.log('Veri Tabanı Bağlantısı Sağlandı...')
