@@ -3,7 +3,6 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const app = express();
 const User = require('./models/user')
-const port = process.env.port || 3000;
 const uri = process.env.MONGO;
 //const dbURL = "mongodb+srv://b3yd4:b3yd42003@yazilimblog.fk8py.mongodb.net/users?retryWrites=true&w=majority";
 const usercli = require('./routes/authRoutes');
@@ -22,11 +21,6 @@ mongoose.connection.on('error', (err) => {
 
 // Görüntü Motoru Yüklüyoruz
 app.set('view engine', 'ejs');
-
-// Server'ı Dinlemeye Aldık
-app.listen(3000, (req, res) => {
-    console.log("Server Ayağa Kaldırıldı...");
-});
 
 // body-parser dahil ettik
 app.use(bodyParser.urlencoded({ extended: true }));
