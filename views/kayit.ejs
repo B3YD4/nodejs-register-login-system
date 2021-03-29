@@ -27,10 +27,10 @@
 
 <form action="/kayitol" method="POST" id="kayit" onsubmit="return verify()">
     <h1>Kayıt Ol</h1>
-    <input type="text" name="kullaniciadi" id= "kadi" required placeholder="Kullanıcı Adınızı Belirleyin">
-    <input type="text" name="eposta" id="mail" required placeholder="E-Posta Adresinizi Girin">
-    <input type="password" name="sifre" id="pass1" value="" required placeholder="Şifrenizi Belirleyin">
-    <input type="password" name="sifre_tekrar" id="pass2" value="" required placeholder="Şifrenizi Tekrar Belirleyin">
+    <input type="text" name="kullaniciadi" id= "kadi" autocomplete="off" required placeholder="Kullanıcı Adınızı Belirleyin">
+    <input type="text" name="eposta" id="mail" autocomplete="off" required placeholder="E-Posta Adresinizi Girin">
+    <input type="password" name="sifre" id="pass1" autocomplete="off" value="" required placeholder="Şifrenizi Belirleyin">
+    <input type="password" name="sifre_tekrar" id="pass2" autocomplete="off" value="" required placeholder="Şifrenizi Tekrar Belirleyin">
     <button type="submit" class = "btn">Kayıt Ol</button>
     <h5>Zaten Bir Hesabınız Var mı? <a href="/"> Giriş Yap </a></h5>
 </form>
