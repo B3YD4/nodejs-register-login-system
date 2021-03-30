@@ -10,8 +10,8 @@ function verify(){
             icon: 'error',
             title: 'Belirttiğiniz Şifreler Uyuşmuyor!',
             showConfirmButton: false,
-            background: '#151515',
-            timer: 1500
+            timer: 1500,
+            background: '#151515'
           });
 
     }else{
