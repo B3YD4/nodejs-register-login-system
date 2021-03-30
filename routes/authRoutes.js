@@ -15,7 +15,7 @@ router.get('/kayitol', (req, res) => {
 // POST İstekleri
 
 router.post('/', (req, res)  => {
-    res.send('<center><h1>Üzügünüm Dostum Kayıtlar Devam Ettiği İçin Henüz Giriş Yapamazsın...</h1></center>');
+    res.send('<center><h1>Üzgünüm Dostum Kayıtlar Devam Ettiği İçin Henüz Giriş Yapamazsın...</h1></center>');
 });
 router.post('/kayitol', (req, res) => {
 
