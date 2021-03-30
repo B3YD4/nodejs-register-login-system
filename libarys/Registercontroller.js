@@ -14,11 +14,6 @@ function verify(){
           timer: 1500,
         });
 
-        .swal-modal {
-          background-color: rgba(63,255,106,0.69);
-          border: 3px solid white;
-        }
-        
     }else{
         Swal.fire({
             icon: 'success',
