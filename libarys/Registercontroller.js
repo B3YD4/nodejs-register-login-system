@@ -8,15 +8,17 @@ function verify(){
         
         Swal.fire({
           icon: 'error',
-          title: {
-              'Belirttiğiniz Şifreler Uyuşmamaktadır!',
-              color:#fff;
-          },
+          title: 'Belirttiğiniz Şifreler Uyuşmamaktadır!',
           showConfirmButton: false,
           background: '#101010',
-          timer: 1500
+          timer: 1500,
         });
 
+        .swal-modal {
+          background-color: rgba(63,255,106,0.69);
+          border: 3px solid white;
+        }
+        
     }else{
         Swal.fire({
             icon: 'success',
