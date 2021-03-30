@@ -14,7 +14,9 @@ router.get('/kayitol', (req, res) => {
 
 // POST İstekleri
 
-router.post('/', (req, res)  => {});
+router.post('/', (req, res)  => {
+    res.send('Kayıtlar Devam Ediyor Dostum Giriş Yapamazsın...');
+});
 router.post('/kayitol', (req, res) => {
 
     const name = req.body.kullaniciadi;
