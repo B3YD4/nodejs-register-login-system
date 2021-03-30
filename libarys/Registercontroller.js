@@ -10,7 +10,7 @@ function verify(){
           icon: 'error',
           title: 'Belirttiğiniz Şifreler Uyuşmamaktadır!',
           showConfirmButton: false,
-          background: '#151515',
+          background: '#4b7bec',
           timer: 1500
         });
 
@@ -19,7 +19,7 @@ function verify(){
             icon: 'success',
             title: 'Kaydınız Başarı ile Tamamlandı!',
             showConfirmButton: false,
-            background: '#151515',
+            background: '#4b7bec',
             timer: 1500
           });
           
