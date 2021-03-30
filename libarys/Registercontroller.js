@@ -8,7 +8,10 @@ function verify(){
         
         Swal.fire({
           icon: 'error',
-          title: '<span style="color=:white;">Belirttiğiniz Şifreler Uyuşmamaktadır!</span>',
+          title: {
+              'Belirttiğiniz Şifreler Uyuşmamaktadır!',
+              color:#fff;
+          },
           showConfirmButton: false,
           background: '#101010',
           timer: 1500
