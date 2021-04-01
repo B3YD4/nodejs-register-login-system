@@ -1,4 +1,5 @@
 function verify(){
+    
     var pass1 = document.getElementById('pass1').value;
     var pass2 = document.getElementById('pass2').value;
     var kadi = document.getElementById('kadi').value;
@@ -26,6 +27,7 @@ function verify(){
 }
 
 function valid(){
+    
     var form = document.getElementById('kayit');
     var mail = document.getElementById('mail').value;
     var btn = document.getElementById('buton');
@@ -52,8 +54,11 @@ function valid(){
 function passvalid(){
 
     var pass1 = document.getElementById('pass1').value;
+    var pass2 = document.getElementById('pass2').value;
     var btn = document.getElementById('buton');
+    var esle = document.getElementById('esle');
     var invalidpass = document.getElementById('sifreyazi');
+    var invalidpass2 = document.getElementById('sifreyazi2');
     var invalidpattern = /[+,!,?,*,_,%]/i;
 
     // Şifre de Özel Karakter Kontrolü
@@ -62,8 +67,8 @@ function passvalid(){
 
         invalidpass.style.display = "none"
 
-
     }else{
+        
         invalidpass.style.display = "block"
         btn.style.display = "none"
     }
