@@ -8,11 +8,11 @@ function verify(){
     if(pass1 != pass2 || pass2 != pass1){
         
         Swal.fire({
-          icon: 'error',
-          title: 'Belirttiğiniz Şifreler Uyuşmamaktadır!',
-          showConfirmButton: false,
-          timer: 1500,
-        });
+            icon: 'error',
+            title: 'Belirttiğiniz Şifreler Uyuşmuyor!',
+            showConfirmButton: false,
+            timer: 1500
+          });
 
     }else{
         Swal.fire({
@@ -27,7 +27,7 @@ function verify(){
 }
 
 function valid(){
-    
+
     var form = document.getElementById('kayit');
     var mail = document.getElementById('mail').value;
     var btn = document.getElementById('buton');
@@ -68,7 +68,7 @@ function passvalid(){
         invalidpass.style.display = "none"
 
     }else{
-        
+
         invalidpass.style.display = "block"
         btn.style.display = "none"
     }
@@ -98,7 +98,7 @@ function passvalid(){
 
         esle.style.display = "none"
         btn.style.display = "block"
-        
+
     }
 
 }
