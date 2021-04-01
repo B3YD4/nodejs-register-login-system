@@ -137,6 +137,72 @@ body{
     color: #ff3f34;
 }
 
+#yazi{
+    border: 0;
+    margin: 20px auto;
+    border: 2px solid #ff4757;
+    background: #ff4757;
+    border-radius: 15px;
+    padding: 10px 10px;
+    color: white;
+    text-align: center;
+    width: 200px;
+    display: none;
+}
+
+#yazi2{
+    border: 0;
+    margin: 20px auto;
+    border: 2px solid #2ed573;
+    background: #2ed573;
+    border-radius: 15px;
+    padding: 10px 10px;
+    color: white;
+    text-align: center;
+    width: 200px;
+    display: none;
+}
+
+#sifreyazi{
+    border: 0;
+    margin: 20px auto;
+    border: 2px solid #ff4757;
+    background: #ff4757;
+    border-radius: 15px;
+    padding: 10px 10px;
+    color: white;
+    text-align: center;
+    width: 200px;
+    display: none;
+}
+
+#sifreyazi2{
+    border: 0;
+    margin: 20px auto;
+    border: 2px solid #ff4757;
+    background: #ff4757;
+    border-radius: 15px;
+    padding: 10px 10px;
+    color: white;
+    text-align: center;
+    width: 200px;
+    display: none;
+}
+
+
+#esle{
+    border: 0;
+    margin: 20px auto;
+    border: 2px solid #ff4757;
+    background: #ff4757;
+    border-radius: 15px;
+    padding: 10px 10px;
+    color: white;
+    text-align: center;
+    width: 200px;
+    display: none;
+}
+
 ::placeholder{
     color: white;
 }
