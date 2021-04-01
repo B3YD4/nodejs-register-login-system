@@ -24,3 +24,76 @@ function verify(){
     }
 
 }
+
+function valid(){
+    var form = document.getElementById('kayit');
+    var mail = document.getElementById('mail').value;
+    var btn = document.getElementById('buton');
+    var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    var invalid = document.getElementById('yazi');
+    var valid = document.getElementById('yazi2');
+
+
+    if (mail.match(pattern)){
+
+        valid.style.display = "block"
+        invalid.style.display = "none"
+        btn.style.display = "block"
+
+    }else{
+
+        valid.style.display = "none"
+        invalid.style.display = "block"
+        btn.style.display = "none"
+
+    }
+}
+
+function passvalid(){
+
+    var pass1 = document.getElementById('pass1').value;
+    var btn = document.getElementById('buton');
+    var invalidpass = document.getElementById('sifreyazi');
+    var invalidpattern = /[+,!,?,*,_,%]/i;
+
+    if(pass1.match(invalidpattern)){
+
+        invalidpass.style.display = "none"
+
+
+    }else{
+        invalidpass.style.display = "block"
+        btn.style.display = "none"
+    }
+
+
+
+}
+
+function passvalid2(){
+
+    var pass1 = document.getElementById('pass1').value;
+    var pass2 = document.getElementById('pass2').value;
+    var esle = document.getElementById('esle');
+    var btn = document.getElementById('buton');
+    var invalidpass2 = document.getElementById('sifreyazi2');
+    var invalidpattern = /[+,!,?,*,_,%]/i;
+
+    if(pass2.match(invalidpattern)){
+
+        invalidpass2.style.display = "none"
+
+    }else{
+
+        invalidpass2.style.display = "block"
+        btn.style.display = "none"
+
+    }
+
+    if(pass1 != pass2 || pass2 != pass1){
+        esle.style.display = "block"
+    }else{
+        esle.style.display = "none"
+    }
+
+}
