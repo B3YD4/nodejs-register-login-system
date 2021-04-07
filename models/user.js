@@ -9,7 +9,8 @@ const userSchema = new Schema({
 
     eposta: {
         type: String,
-        require: true
+        require: true,
+        unique: true
     },
 
     sifre:{
@@ -25,5 +26,3 @@ const userSchema = new Schema({
 
 const User = mongoose.model('User',userSchema);
 module.exports = User;
-
-
