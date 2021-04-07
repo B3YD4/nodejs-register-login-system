@@ -8,8 +8,7 @@ const uri = process.env.MONGO;
 const usercli = require('./routes/authRoutes');
 const bodyParser = require('body-parser');
 const Swal = require('sweetalert2');
-const path = require('path');
-const passport = require('passport');
+
 const PORT = process.env.PORT || 3000;
 
 // Veri Tabanı Bağlantısı...
