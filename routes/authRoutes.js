@@ -12,9 +12,9 @@ router.get('/', (req, res) => {
 router.post('/', (req, res)  => {
 
     const pass = req.body.pass;
-    const name = req.body.kadi;
+    const mail = req.body.email;
 
-    const bul = User.findOne({$and:[{kullaniciadi: name},{sifre: pass}]},(err,data) =>{
+    const bul = User.findOne({$and:[{eposta: mail},{sifre: pass}]},(err,data) =>{
         
         try{
 
@@ -86,7 +86,7 @@ router.post('/kayitol', (req, res) => {
                 if(err){
                     console.log(err);
                 }else{
-                    res.redirect('/')
+                    console.log('Başarılı!');
                 }
                 
             });
@@ -114,4 +114,4 @@ router.use((req, res) => {
     res.send("<h1><center>Açık mı Arıyosun Cnm :D");
 })
 
-module.exports = router;
+module.exports = router
