@@ -21,15 +21,16 @@ body{
     font-size: 3em;
     transition: 2s;
     animation: yazi 2s infinite;
+    -webkit-box-reflect: below 0.1px linear-gradient(transparent, rgba(255,255,255,0.5));
     
 }
 
 @keyframes yazi{
     0%, 100%{
-        transform: translateY(0px);
+         transform: translateY(-50px);
     }
     50%{
-        transform: translateY(15px);
+        transform: translateY(-30px);
     }
 }
 
