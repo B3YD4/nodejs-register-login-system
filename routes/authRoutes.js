@@ -1,40 +1,59 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
-// anasayfa get-post
+// Anasayfa GET-POST
 
 router.get('/', (req, res) => {
-    res.render('index', {title: 'Giriş Yap'});
-});
 
+    if(req.session.userId){
+        res.render('userpage',{title:req.session.userName});
+    }else{
+        res.render('index', {title: 'Giriş Yap'});
+    }
+
+});
 
 router.post('/', (req, res)  => {
 
     const pass = req.body.pass;
     const mail = req.body.email;
 
-    const bul = User.findOne({$and:[{eposta: mail},{sifre: pass}]},(err,data) =>{
+    const bul = User.findOne({eposta: mail},(err,data) =>{
         
         try{
 
             if(bul){
-                //res.send("<h1><center>Hoşgeldin " + data.kullaniciadi + " Seni Aramız'da Görmekten Mutluluk Duyduk...")
-                res.render('userpage',{title:data.kullaniciadi});
+
+                req.session.userId = data._id
+                req.session.userName = data.kullaniciadi
+
+                bcrypt.compare(data.sifre, pass, (err, result) => {
+                    res.render('userpage',{title:data.kullaniciadi});
+                });
+                
             }
 
         }catch{
-            res.send("<h1><center>Kullanıcı Adı veya Şifre Yanlış...")
+            res.send("<h1><center>Mail Adresi veya Şifre Yanlış...")
         }
 
     });
 
 });
 
-// kayıt olma get-post
+
+// ===== Kayıt Olma GET-POST =====
 
 router.get('/kayitol', (req, res) => {
-    res.render('kayit', {title: 'Kayıt Ol'});
+
+    if(req.session.userId){
+        res.redirect('/');
+    }else{
+        res.render('kayit', {title: 'Kayıt Ol'});
+    }
+    
 });
 
 router.post('/kayitol', (req, res) => {
@@ -60,45 +79,55 @@ router.post('/kayitol', (req, res) => {
         }
         
     });
-    
 
-    const user = new User({
-        kullaniciadi: name,
-        eposta: mail,
-        sifre: pass,
-        sifre_tekrar: passtry
+    bcrypt.hash(pass, 10, (err, hash) => {
+        
+        const user = new User({
+            kullaniciadi: name,
+            eposta: mail,
+            sifre: hash,
+            sifre_tekrar: hash
+        });
+    
+    
+    
+        user.save((err,data) => {
+            if(err){
+                console.log(err);
+            }else{
+                console.log('Başarılı!');
+            }
+                    
+        });
+
     });
-
-
-
-    
-
-    if(pass != passtry || passtry != pass){
-
-        setTimeout(()=>{
-            res.redirect('/kayitol');
-        }, 1600);
-
-    }else{
-        setTimeout(()=>{
-
-            user.save((err,data) => {
-                if(err){
-                    console.log(err);
-                }else{
-                    console.log('Başarılı!');
-                }
-                
-            });
-
-        },1800);
-
-    }
 
 });
 
 
-// Yönlendirmeler
+// ===== Çıkış Yapma =====
+router.get('/cikisyap', (req, res) => {
+    req.session.destroy((err) => {
+        if(err){
+            console.log(err);
+        }else{
+            res.redirect('/');
+        }
+    });
+});
+
+// ===== JavaScript Odası =====
+router.get('/javascriptodasi', (req, res) => {
+
+    if(req.session.userId){
+        res.render('rooms/jsroom.ejs', {title:req.session.userName});
+    }else{
+        res.redirect('/');
+    }
+
+});
+
+// ===== Yönlendirmeler =====
 
 router.get('/girisyap', (req, res) => {
     res.redirect('/')
@@ -108,10 +137,17 @@ router.get('/login',(req, res) => {
     res.redirect('/')
 });
 
+
 // Eğer Sayfa Bulunamadıysa
 
 router.use((req, res) => {
-    res.send("<h1><center>Açık mı Arıyosun Cnm :D");
-})
+
+    if(req.session.userId){
+        res.redirect('/');
+    }else{
+        res.send("<h1><center>Açık mı Arıyosun Cnm :D");
+    }
+
+});
 
 module.exports = router
