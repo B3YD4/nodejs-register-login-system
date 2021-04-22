@@ -8,6 +8,8 @@ const uri = process.env.MONGO;
 const usercli = require('./routes/authRoutes');
 const bodyParser = require('body-parser');
 const Swal = require('sweetalert2');
+const expressSession = require('express-session');
+const MongoStore = require('connect-mongo');
 const PORT = process.env.PORT || 3000;
 
 // Veri Tabanı Bağlantısı...
@@ -36,6 +38,13 @@ app.use(express.static('css'));
 app.use(express.static('img'));
 app.use(express.static('libarys'));
 app.use(morgan('dev'));
+
+app.use(expressSession({
+    secret: 'uzumlukekim',
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({mongoUrl: localurl})
+}));
 
 // Yönlendirmeler - Şema
 app.use('/',usercli);
