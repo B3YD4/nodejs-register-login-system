@@ -13,7 +13,7 @@ const MongoStore = require('connect-mongo');
 const PORT = process.env.PORT || 3000;
 
 // Veri Tabanı Bağlantısı...
-mongoose.connect(uri , {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(uri , {useNewUrlParser: true, useUnifiedTopology: true, createIndexes: true});
 
 mongoose.connection.on('open', () => {
     console.log('Veri Tabanı Bağlantısı Sağlandı...')
