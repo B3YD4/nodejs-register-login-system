@@ -43,7 +43,7 @@ app.use(expressSession({
     secret: 'uzumlukekim',
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({mongoUrl: localurl})
+    store: MongoStore.create({mongoUrl: uri})
 }));
 
 // Yönlendirmeler - Şema
