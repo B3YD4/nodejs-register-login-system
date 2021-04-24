@@ -17,7 +17,7 @@ const PORT = process.env.PORT || 3000;
 
 // Veri Tabanı Bağlantısı...
 // ÖNEMLİ NOT!!!!! GİTHUB KOYMADAN ÖNCE VERİTABANINA BAĞLANMA DEĞİŞKENİNİ "uri" OLARAK AYARLA!
-mongoose.connect(localurl , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
+mongoose.connect(uri , {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true});
 
 mongoose.connection.on('open', () => {
     console.log('Veri Tabanı Bağlantısı Sağlandı...')
