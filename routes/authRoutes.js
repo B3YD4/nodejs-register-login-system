@@ -29,10 +29,20 @@ router.post('/', (req, res)  => {
                 req.session.userId = data._id
                 req.session.userName = data.kullaniciadi
 
-                bcrypt.compare(data.sifre, pass, (err, result) => {
-                    res.render('userpage',{title:data.kullaniciadi});
+                bcrypt.compare(pass, data.sifre, (err, result) => {
+                    if(result == false){
+                        req.session.destroy((err) => {
+                            if(err){
+                                console.log(err);
+                            }else{
+                                res.send("<h1><center>Mail Adresi veya Şifre Yanlış...")
+                            }
+                        });
+                    }else{
+                        res.render('userpage', {title: data.kullaniciadi});
+                    }
+                    
                 });
-                
             }
 
         }catch{
