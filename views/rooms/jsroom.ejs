@@ -5,7 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="rooms/jsroom.css">
-    <script src="/jsroom.js"></script>
     <script src="https://kit.fontawesome.com/1e85dc0075.js" crossorigin="anonymous"></script>
     <title>JavaScript Odası | <%=title%></title>
 </head>
@@ -20,7 +19,7 @@
 
         <header>
 
-            <img src="js.png" class="img">
+            <img src="python.png" class="img">
             <p><%=title%></p>
 
         </header>
@@ -36,5 +35,22 @@
 
     </div>
 
+    <div id="sohbet">
+
+        <h3>Naber <%=title%>, Hadi Birşeyler Söyle!</h3>
+
+        <div id="sohbet-ekrani">
+            <div id="cikti"></div>
+            <div id="feedback"></div>
+            <div id="gonderen" style="display: none;"><%=title%></div>
+        </div>
+
+        <input type="text" id="mesaj" placeholder="Mesajınızı Giriniz..." minlength="3">
+        <button id="gonderbtn">Gönder</button>
+
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/chat.js"></script>
 </body>
 </html>
