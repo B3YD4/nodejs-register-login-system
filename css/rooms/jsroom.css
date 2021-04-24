@@ -3,6 +3,7 @@
     padding: 0;
     list-style: none;
     text-decoration: none;
+    font-family:sans-serif;
 }
 
 body{
@@ -124,3 +125,67 @@ label #cancel{
     border-radius: 50%;
     filter: drop-shadow(0 0 0.75rem #7158e2);
 }
+
+#sohbet{
+    max-width: 800px;
+    background-color: white;
+    border-radius: 20px;
+    margin: auto;
+}
+
+h3{
+    text-align: center;
+    width: 800px;
+    height: 30px;
+    background-color: #202020;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+    color: #fff;
+    text-shadow: 3px 3px 15px #7158e2;
+}
+
+#sohbet-ekrani{
+    height: 500px;
+    overflow-y: auto;
+}
+
+#cikti h4{
+    font-size: 15px;
+    padding-left: 3px;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    
+}
+
+#cikti strong{
+    color: #2d98da;
+}
+
+#feedback p{
+    font-size: 15px;
+    padding: 12px;
+}
+
+button{
+    font-family: sans-serif;
+    background: #202020;
+    border: #202020;
+    width: 800px;
+    height: 40px;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    color: white;
+    font-size: large;
+}
+
+input{
+    font-family: sans-serif;
+    padding: 10px 20px;
+    border: 0;
+    border-top: 1px solid #909090;
+    display: block;
+    width: 760px;
+    font-size: 15px;
+}
+
+input:focus, button:focus{ outline: 0;}
