@@ -1,4 +1,4 @@
-const socket = io.connect('https://yazilimblog.ga');
+const socket = io.connect('http://localhost:3000');
 
 const mesaj = document.getElementById('mesaj');
 const gonderbtn = document.getElementById('gonderbtn');
