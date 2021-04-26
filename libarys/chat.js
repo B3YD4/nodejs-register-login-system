@@ -1,5 +1,4 @@
 const socket = io.connect();
-
 const mesaj = document.getElementById('mesaj');
 const gonderbtn = document.getElementById('gonderbtn');
 const cikti = document.getElementById('cikti');
@@ -7,32 +6,48 @@ const feedback = document.getElementById('feedback');
 const gonderen = document.getElementById('gonderen');
 const sohbet_ekrani = document.getElementById('sohbet-ekrani');
 
-// Mesaj Değerlerini Gönderiyoruz
+// Gönder Butonuna Basıldıysa Gerekli Kontrolleri Yapıyoruz ve Şartlar Uygunsa Yazı Değerlerini Emitliyoruz.
 
 gonderbtn.addEventListener('click', () => {
-
-    socket.emit('chat', {
-        mesaj: mesaj.value,
-        gonderen: gonderen.innerHTML
-    });
-
-    mesaj.value = ""
+    if(mesaj.value == ""){
+        mesaj.placeholder="Lütfen Boş Alan Bırakmayınız!";
+    }else{
+        socket.emit('chat', {
+            mesaj: mesaj.value,
+            gonderen: gonderen.innerHTML
+        });
+        mesaj.placeholder="Mesajınızı Giriniz...";
+        mesaj.value = ""
+    }
 
 });
 
 // Mesajı Ekrana yazdırıyoruz ve Scroll Ayarını Yapıyoruz
 
 socket.on('chat', data => {
-    cikti.innerHTML += "<h4><strong>" + data.gonderen + ": </strong>" + data.mesaj + "</h4>"
+    // Sohbette Kullanılan html Kodlarını Devre Dışı Bırakıyoruz ve Mesajımızı Yazıdırıyoruz.
+    cikti.innerHTML += "<h4><strong>" + data.gonderen + ": </strong>" + data.mesaj.replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); + "</h4>";
     feedback.innerHTML = ""
     sohbet_ekrani.scrollTop = sohbet_ekrani.scrollHeight;
 });
 
-// Herhangi Bir Tuşa Basıldıysa yaziyor komutunu emitliyoruz
+// Herhangi Bir Tuşa Basıldıysa veya Silme Tuşuna Basıldıysa 'yaziyor' veya 'silme' Komutlarını Emitlioruz
 
-mesaj.addEventListener('keypress', () => {
-    socket.emit('yaziyor',gonderen.innerHTML);
+mesaj.addEventListener('keydown', () => {
+    //Mesaj Kısmı Boş ise feedback Kısmını data Olarak Gönderiyoruz.
+    if(event.keyCode == 8 || mesaj.value == ""){
+        let tus = feedback.innerHTML = "";
+        socket.emit('siliyor',tus);
+    }else{
+        socket.emit('yaziyor',gonderen.innerHTML);
+    }
 });
+
+// Mesaj Kutucuğunun İçi Boş ise Siliyor Emitini Yakalıyoruz ve feedback Kısmını Temizliyoruz
+
+socket.on('siliyor', data => {
+    feedback.innerHTML = "";
+})
 
 // yaziyor emitini Yakalayıp feedback Kısmına Değerimizi Yazdırıyoruz
 
