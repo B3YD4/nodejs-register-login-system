@@ -49,6 +49,10 @@ io.on('connection', (socket) => {
     socket.on('yaziyor', data => {
         socket.broadcast.emit('yaziyor', data);
     });
+    
+    socket.on('siliyor', data => {
+        socket.broadcast.emit('siliyor', data);
+    });
 
 });
 
