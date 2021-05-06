@@ -197,7 +197,7 @@ input:focus, button:focus{ outline: 0;}
     }
 
     #sohbet{
-        max-width: 440px;
+        max-width: 460px;
         transform: translate(0px,20%);
     }
 
@@ -208,7 +208,7 @@ input:focus, button:focus{ outline: 0;}
 
     h3{
         text-align: center;
-        width: 440px;
+        width: 460px;
         height: 30px;
         background-color: #202020;
         border-top-left-radius: 18px;
@@ -218,11 +218,11 @@ input:focus, button:focus{ outline: 0;}
     }
 
     input{
-        width: 400px;
+        width: 420px;
     }
 
     button{
-        width: 440px;
+        width: 460px;
     }
 
     .sidebar{
