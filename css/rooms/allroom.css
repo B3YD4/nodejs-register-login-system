@@ -190,7 +190,7 @@ input{
 
 input:focus, button:focus{ outline: 0;}
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 770px) {
 
     *{
         font-family: sans-serif;
