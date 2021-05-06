@@ -42,6 +42,7 @@ io.on('connection', (socket) => {
 
     console.log('Yeni Birisi!');
 
+    // JavaScript Geçerliliğinde ki Kodlar
     socket.on('chat', data => {
         io.emit('chat', data);
     });
@@ -49,11 +50,49 @@ io.on('connection', (socket) => {
     socket.on('yaziyor', data => {
         socket.broadcast.emit('yaziyor', data);
     });
-    
+
     socket.on('siliyor', data => {
         socket.broadcast.emit('siliyor', data);
     });
 
+    // CSS3 Geçerliliğinde ki Kodlar
+    socket.on('sohbet', data => {
+        io.emit('sohbet', data);
+    });
+
+    socket.on('yaziyor1', data => {
+        socket.broadcast.emit('yaziyor1', data);
+    });
+
+    socket.on('siliyor1', data => {
+        socket.broadcast.emit('siliyor1', data);
+    });
+
+    // Python Geçerliliğinde ki Kodlar
+    socket.on('sohbet2', data => {
+        io.emit('sohbet2', data);
+    });
+
+    socket.on('yaziyor2', data => {
+        socket.broadcast.emit('yaziyor2', data);
+    });
+
+    socket.on('siliyor2', data => {
+        socket.broadcast.emit('siliyor2', data);
+    });
+
+    // Html5 Geçerliliğinde ki Kodlar
+    socket.on('sohbet3', data => {
+        io.emit('sohbet3', data);
+    });
+
+    socket.on('yaziyor3', data => {
+        socket.broadcast.emit('yaziyor3', data);
+    });
+
+    socket.on('siliyor3', data => {
+        socket.broadcast.emit('siliyor3', data);
+    });
 });
 
 // body-parser dahil ettik
