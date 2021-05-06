@@ -137,6 +137,39 @@ router.get('/javascriptodasi', (req, res) => {
 
 });
 
+// CSS-3 Odası
+router.get('/css3odasi', (req, res) => {
+
+    if(req.session.userId){
+        res.render('rooms/css3room.ejs', {title:req.session.userName});
+    }else{
+        res.redirect('/');
+    }
+
+});
+
+// Python Odası
+router.get('/pythonodasi', (req, res) => {
+
+    if(req.session.userId){
+        res.render('rooms/pythonroom.ejs', {title:req.session.userName});
+    }else{
+        res.redirect('/');
+    }
+
+});
+
+// Html5 Odası
+router.get('/html5odasi', (req, res) => {
+
+    if(req.session.userId){
+        res.render('rooms/html5room.ejs', {title:req.session.userName});
+    }else{
+        res.redirect('/');
+    }
+
+});
+
 // ===== Yönlendirmeler =====
 
 router.get('/girisyap', (req, res) => {
