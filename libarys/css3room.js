@@ -10,7 +10,29 @@ const sohbet_ekrani = document.getElementById('sohbet-ekrani');
 
 gonderbtn.addEventListener('click', () => {
     if(mesaj.value == ""){
+
         mesaj.placeholder="Lütfen Boş Alan Bırakmayınız!";
+    
+    }else if(mesaj.value == "sa" || mesaj.value == "Sa" || mesaj.value == "sA" || mesaj.value == "SA"){
+
+        const text = "Selâmün Aleyküm"
+        socket.emit('sohbet', {
+            mesaj: text,
+            gonderen: gonderen.innerHTML
+        });
+        mesaj.placeholder="Mesajınızı Giriniz...";
+        mesaj.value = ""
+
+    }else if(mesaj.value == "as" || mesaj.value == "AS" || mesaj.value == "As" || mesaj.value == "aS"){
+
+        const text = "Aleyküm Selâm"
+        socket.emit('sohbet', {
+            mesaj: text,
+            gonderen: gonderen.innerHTML
+        });
+        mesaj.placeholder="Mesajınızı Giriniz...";
+        mesaj.value = ""
+
     }else{
         socket.emit('sohbet', {
             mesaj: mesaj.value,
