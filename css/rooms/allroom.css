@@ -197,7 +197,7 @@ input:focus, button:focus{ outline: 0;}
     }
 
     #sohbet{
-        max-width: 460px;
+        width: 460px;
         transform: translate(0px,20%);
     }
 
