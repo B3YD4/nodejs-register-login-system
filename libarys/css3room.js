@@ -10,13 +10,13 @@ const sohbet_ekrani = document.getElementById('sohbet-ekrani');
 
 gonderbtn.addEventListener('click', () => {
     if(mesaj.value == ""){
-
+        
         mesaj.placeholder="Lütfen Boş Alan Bırakmayınız!";
-    
+
     }else if(mesaj.value == "sa" || mesaj.value == "Sa" || mesaj.value == "sA" || mesaj.value == "SA"){
 
         const text = "Selâmün Aleyküm"
-        socket.emit('sohbet', {
+        socket.emit('chat', {
             mesaj: text,
             gonderen: gonderen.innerHTML
         });
@@ -26,7 +26,7 @@ gonderbtn.addEventListener('click', () => {
     }else if(mesaj.value == "as" || mesaj.value == "AS" || mesaj.value == "As" || mesaj.value == "aS"){
 
         const text = "Aleyküm Selâm"
-        socket.emit('sohbet', {
+        socket.emit('chat', {
             mesaj: text,
             gonderen: gonderen.innerHTML
         });
@@ -34,7 +34,7 @@ gonderbtn.addEventListener('click', () => {
         mesaj.value = ""
 
     }else{
-        socket.emit('sohbet', {
+        socket.emit('chat', {
             mesaj: mesaj.value,
             gonderen: gonderen.innerHTML
         });
@@ -46,11 +46,18 @@ gonderbtn.addEventListener('click', () => {
 
 // Mesajı Ekrana yazdırıyoruz ve Scroll Ayarını Yapıyoruz
 
-socket.on('sohbet', data => {
+socket.on('chat', data => {
     // Sohbette Kullanılan html Kodlarını Devre Dışı Bırakıyoruz ve Mesajımızı Yazıdırıyoruz.
-    cikti.innerHTML += "<h4><strong>" + data.gonderen + ": </strong>" + data.mesaj.replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); + "</h4>";
-    feedback.innerHTML = ""
-    sohbet_ekrani.scrollTop = sohbet_ekrani.scrollHeight;
+    if(data.gonderen == "B3YD4" || data.gonderen == "b3yd4"){
+        cikti.innerHTML += "<h4><strong style='color:#eb3b5a;text-shadow: 3px 3px 15px #eb3b5a;'>" + data.gonderen + ": </strong>" + data.mesaj.replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); + "</h4>";
+        feedback.innerHTML = ""
+        sohbet_ekrani.scrollTop = sohbet_ekrani.scrollHeight;
+    }else{
+        cikti.innerHTML += "<h4><strong>" + data.gonderen + ": </strong>" + data.mesaj.replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); + "</h4>";
+        feedback.innerHTML = ""
+        sohbet_ekrani.scrollTop = sohbet_ekrani.scrollHeight;
+    }
+
 });
 
 // Herhangi Bir Tuşa Basıldıysa veya Silme Tuşuna Basıldıysa 'yaziyor' veya 'silme' Komutlarını Emitlioruz
@@ -59,21 +66,21 @@ mesaj.addEventListener('keydown', () => {
     //Mesaj Kısmı Boş ise feedback Kısmını data Olarak Gönderiyoruz.
     if(event.keyCode == 8 || mesaj.value == ""){
         let tus = feedback.innerHTML = "";
-        socket.emit('siliyor1',tus);
+        socket.emit('siliyor',tus);
     }else{
-        socket.emit('yaziyor1',gonderen.innerHTML);
+        socket.emit('yaziyor',gonderen.innerHTML);
     }
 });
 
 // Mesaj Kutucuğunun İçi Boş ise Siliyor Emitini Yakalıyoruz ve feedback Kısmını Temizliyoruz
 
-socket.on('siliyor1', data => {
+socket.on('siliyor', data => {
     feedback.innerHTML = "";
 })
 
 // yaziyor emitini Yakalayıp feedback Kısmına Değerimizi Yazdırıyoruz
 
-socket.on('yaziyor1', data => {
+socket.on('yaziyor', data => {
     feedback.innerHTML = '<h5>' + data + " Yazıyor..." + "</h5>"
 });
 
