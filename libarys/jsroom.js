@@ -10,9 +10,9 @@ const sohbet_ekrani = document.getElementById('sohbet-ekrani');
 
 gonderbtn.addEventListener('click', () => {
     if(mesaj.value == ""){
-
+        
         mesaj.placeholder="Lütfen Boş Alan Bırakmayınız!";
-    
+
     }else if(mesaj.value == "sa" || mesaj.value == "Sa" || mesaj.value == "sA" || mesaj.value == "SA"){
 
         const text = "Selâmün Aleyküm"
@@ -48,9 +48,16 @@ gonderbtn.addEventListener('click', () => {
 
 socket.on('chat', data => {
     // Sohbette Kullanılan html Kodlarını Devre Dışı Bırakıyoruz ve Mesajımızı Yazıdırıyoruz.
-    cikti.innerHTML += "<h4><strong>" + data.gonderen + ": </strong>" + data.mesaj.replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); + "</h4>";
-    feedback.innerHTML = ""
-    sohbet_ekrani.scrollTop = sohbet_ekrani.scrollHeight;
+    if(data.gonderen == "B3YD4" || data.gonderen == "b3yd4"){
+        cikti.innerHTML += "<h4><strong style='color:#eb3b5a;text-shadow: 3px 3px 15px #eb3b5a;'>" + data.gonderen + ": </strong>" + data.mesaj.replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); + "</h4>";
+        feedback.innerHTML = ""
+        sohbet_ekrani.scrollTop = sohbet_ekrani.scrollHeight;
+    }else{
+        cikti.innerHTML += "<h4><strong>" + data.gonderen + ": </strong>" + data.mesaj.replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); + "</h4>";
+        feedback.innerHTML = ""
+        sohbet_ekrani.scrollTop = sohbet_ekrani.scrollHeight;
+    }
+
 });
 
 // Herhangi Bir Tuşa Basıldıysa veya Silme Tuşuna Basıldıysa 'yaziyor' veya 'silme' Komutlarını Emitlioruz
