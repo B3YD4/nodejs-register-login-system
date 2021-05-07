@@ -217,7 +217,7 @@ input:focus, button:focus{ outline: 0;}
     }
 
     #sohbet{
-        max-width: 80%;
+        max-width: 83%;
         transform: translate(0px,6%);
         border-radius: 20px;
         height: 100%;
