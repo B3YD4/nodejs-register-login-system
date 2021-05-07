@@ -6,6 +6,12 @@ const feedback = document.getElementById('feedback');
 const gonderen = document.getElementById('gonderen');
 const sohbet_ekrani = document.getElementById('sohbet-ekrani');
 
+// İmleci Direkt Mesaj Yazma Kısmına Tıklatıyoruz
+
+if(mesaj.value == ""){
+    mesaj.focus();
+}
+
 // Gönder Butonuna Basıldıysa Gerekli Kontrolleri Yapıyoruz ve Şartlar Uygunsa Yazı Değerlerini Emitliyoruz.
 
 gonderbtn.addEventListener('click', () => {
