@@ -184,7 +184,7 @@ button{
     border: #2f3542 solid;
 }
 
-.send{
+button i{
     transform: translateX(-1.5px);
 }
 
