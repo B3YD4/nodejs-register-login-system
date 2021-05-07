@@ -217,14 +217,14 @@ input:focus, button:focus{ outline: 0;}
     }
 
     #sohbet{
-        max-width: 86%;
+        max-width: 89%;
         transform: translate(0px,6%);
         border-radius: 20px;
         height: 100%;
     }
 
     #sohbet-ekrani{
-        height: 600px;
+        height: 570px;
     }
 
     h3{
