@@ -1,57 +1,94 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="rooms/allroom.css">
-    <script src="https://kit.fontawesome.com/1e85dc0075.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <title>CSS3 Odası | <%=title%></title>
-</head>
-<body>
-    
-    <input type="checkbox" id="check">
-    <label for="check">
-        <i class="fas fa-bars" id="btn"></i>
-        <i class="fas fa-times" id="cancel"></i>
-    </label>
-    <div class="sidebar">
+const socket = io.connect();
+const mesaj = document.getElementById('mesaj');
+const gonderbtn = document.getElementById('gonderbtn');
+const cikti = document.getElementById('cikti');
+const feedback = document.getElementById('feedback');
+const gonderen = document.getElementById('gonderen');
+const sohbet_ekrani = document.getElementById('sohbet-ekrani');
 
-        <header>
+// Gönder Butonuna Basıldıysa Gerekli Kontrolleri Yapıyoruz ve Şartlar Uygunsa Yazı Değerlerini Emitliyoruz.
 
-            <img src="python.png" class="img">
-            <p><%=title%></p>
+gonderbtn.addEventListener('click', () => {
+    if(mesaj.value == ""){
+        
+        mesaj.placeholder="Lütfen Boş Alan Bırakmayınız!";
 
-        </header>
+    }else if(mesaj.value == "sa" || mesaj.value == "Sa" || mesaj.value == "sA" || mesaj.value == "SA"){
 
-        <ul>
-            <li><a href="/"> <i class="fas fa-home"></i>Odalar</a></li>
-            <li><a href="/"> <i class="fas fa-comment"></i>Sohbet Odası</a></li>
-            <li><a href="/"> <i class="fas fa-question"></i>Soru-Yardım</a></li>
-            <li><a href="/"> <i class="fas fa-graduation-cap"></i>Eğitim</a></li>
-            <li><a href="/"> <i class="fas fa-cog"></i>Hesap</a></li>
-            <li><a href="/cikisyap"> <i class="fas fa-sign-out-alt"></i>Çıkış Yap</a></li>
-        </ul>
+        const text = "Selâmün Aleyküm"
+        socket.emit('chat', {
+            mesaj: text,
+            gonderen: gonderen.innerHTML
+        });
+        mesaj.placeholder="Mesajınızı Giriniz...";
+        mesaj.value = ""
 
-    </div>
+    }else if(mesaj.value == "as" || mesaj.value == "AS" || mesaj.value == "As" || mesaj.value == "aS"){
 
-    <div id="sohbet">
+        const text = "Aleyküm Selâm"
+        socket.emit('chat', {
+            mesaj: text,
+            gonderen: gonderen.innerHTML
+        });
+        mesaj.placeholder="Mesajınızı Giriniz...";
+        mesaj.value = ""
 
-        <h3>Naber <%=title%>, Hadi Birşeyler Söyle!</h3>
+    }else{
+        socket.emit('chat', {
+            mesaj: mesaj.value,
+            gonderen: gonderen.innerHTML
+        });
+        mesaj.placeholder="Mesajınızı Giriniz...";
+        mesaj.value = ""
+    }
 
-        <div id="sohbet-ekrani">
-            <div id="cikti"></div>
-            <div id="feedback"></div>
-            <div id="gonderen" style="display: none;"><%=title%></div>
-        </div>
+});
 
-        <input type="text" id="mesaj" placeholder="Mesajınızı Giriniz..." minlength="3">
-        <button id="gonderbtn"><i class="fas fa-paper-plane"></i></button>
+// Mesajı Ekrana yazdırıyoruz ve Scroll Ayarını Yapıyoruz
 
-    </div>
+socket.on('chat', data => {
+    // Sohbette Kullanılan html Kodlarını Devre Dışı Bırakıyoruz ve Mesajımızı Yazıdırıyoruz.
+    if(data.gonderen == "B3YD4" || data.gonderen == "b3yd4"){
+        cikti.innerHTML += "<h4><strong style='color:#eb3b5a;text-shadow: 3px 3px 15px #eb3b5a;'>" + data.gonderen + ": </strong>" + data.mesaj.replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); + "</h4>";
+        feedback.innerHTML = ""
+        sohbet_ekrani.scrollTop = sohbet_ekrani.scrollHeight;
+    }else{
+        cikti.innerHTML += "<h4><strong>" + data.gonderen + ": </strong>" + data.mesaj.replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;"); + "</h4>";
+        feedback.innerHTML = ""
+        sohbet_ekrani.scrollTop = sohbet_ekrani.scrollHeight;
+    }
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/css3room.js"></script>
-</body>
-</html>
+});
+
+// Herhangi Bir Tuşa Basıldıysa veya Silme Tuşuna Basıldıysa 'yaziyor' veya 'silme' Komutlarını Emitlioruz
+
+mesaj.addEventListener('keydown', () => {
+    //Mesaj Kısmı Boş ise feedback Kısmını data Olarak Gönderiyoruz.
+    if(event.keyCode == 8 || mesaj.value == ""){
+        let tus = feedback.innerHTML = "";
+        socket.emit('siliyor',tus);
+    }else{
+        socket.emit('yaziyor',gonderen.innerHTML);
+    }
+});
+
+// Mesaj Kutucuğunun İçi Boş ise Siliyor Emitini Yakalıyoruz ve feedback Kısmını Temizliyoruz
+
+socket.on('siliyor', data => {
+    feedback.innerHTML = "";
+})
+
+// yaziyor emitini Yakalayıp feedback Kısmına Değerimizi Yazdırıyoruz
+
+socket.on('yaziyor', data => {
+    feedback.innerHTML = '<h5>' + data + " Yazıyor..." + "</h5>"
+});
+
+// Enter Tuşuna Basıldıysa Eğer Gönder Butonuna click Ettiriyoruz
+
+mesaj.addEventListener('keyup', () => {
+    if (event.keyCode == 13){
+        event.preventDefault();
+        gonderbtn.click();
+    }
+});
