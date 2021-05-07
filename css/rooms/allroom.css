@@ -167,9 +167,11 @@ h3{
     text-shadow: 3px 3px 15px #2ed573;
 }
 
-#feedback p{
+#feedback h5{
     font-size: 15px;
     padding: 12px;
+    color: #2ed573;
+    text-shadow: 3px 3px 15px #2ed573;
 }
 
 button{
@@ -300,5 +302,4 @@ input:focus, button:focus{ outline: 0;}
     h3{
         font-size: 18px;
     }
-
 }
