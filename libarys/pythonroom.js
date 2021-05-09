@@ -84,13 +84,13 @@ mesaj.addEventListener('keydown', () => {
 
 // Mesaj Kutucuğunun İçi Boş ise Siliyor Emitini Yakalıyoruz ve feedback Kısmını Temizliyoruz
 
-socket.on('siliyor', data => {
+socket.on('siliyor3', data => {
     feedback.innerHTML = "";
 })
 
 // yaziyor emitini Yakalayıp feedback Kısmına Değerimizi Yazdırıyoruz
 
-socket.on('yaziyor', data => {
+socket.on('yaziyor3', data => {
     feedback.innerHTML = '<h5>' + data + " Yazıyor..." + "</h5>"
 });
 
