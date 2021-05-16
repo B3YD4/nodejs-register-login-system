@@ -21,6 +21,16 @@ const userSchema = new Schema({
     sifre_tekrar: {
         type: String,
         require: true
+    },
+    status: {
+        type: String,
+        require: true,
+        default: "offline"
+    },
+    rank: {
+        type: String,
+        require: true,
+        default: "uye"
     }
 }, {timestamps: true} );
 
